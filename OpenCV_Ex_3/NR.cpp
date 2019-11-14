@@ -14,7 +14,6 @@ Mat NR::averageFiltering()
 	auto img_col = res_img.cols;
 	for (int row = 0; row < img_row; row++)
 	{
-
 		for (int col = 0; col < img_col; col++)
 		{
 			if (row > 0 && col > 0 && row < img_row-1&&col < img_col-1)
@@ -57,7 +56,7 @@ int NR::avgcore(int row, int col, Mat inputMat)
 	pointround.push_back(Point(row + 1, col - 1));
 
 	int sumval = 0;
-	for (auto it : pointround)
+	for (auto &it : pointround)
 	{
 		sumval += inputMat.at<uchar>(it);
 	}
