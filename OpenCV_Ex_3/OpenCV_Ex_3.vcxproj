@@ -115,6 +115,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Mian.cpp" />
+    <ClCompile Include="Noise.cpp" />
+    <ClCompile Include="NR.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Noise.h" />
+    <ClInclude Include="NR.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
