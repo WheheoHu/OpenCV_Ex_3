@@ -17,7 +17,7 @@ int main() {
 	imshow("SaltNoise", img_SaltNoise);
 	imshow("GaussianNoise", img_GaussianNoise);
 
-	Mat img_NR_avg = NR(img_gray).averageFiltering();
+	Mat img_NR_avg = NR(img_SaltNoise).averageFiltering();
 	imshow("NR_avg", img_NR_avg);
 	waitKey();
 

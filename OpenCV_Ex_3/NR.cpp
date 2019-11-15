@@ -12,18 +12,19 @@ Mat NR::averageFiltering()
 	}
 	auto img_row = res_img.rows;
 	auto img_col = res_img.cols;
-	for (int row = 0; row < img_row; row++)
+	for (int col = 0; col < img_col; col++)
 	{
-		for (int col = 0; col < img_col; col++)
+		for (int row = 0; row < img_row; row++)
 		{
-			if (row > 0 && col > 0 && row < img_row-1&&col < img_col-1)
+			if (row > 0 && col > 0 && row < img_row - 1 && col < img_col - 1)
 			{
-				res_img.at<uchar>(row, col) = avgcore(row, col, res_img);
-				//res_img.at<uchar>(row, col) = res_img.at<uchar>(row, col);
+				res_img.at<uchar>(Point(col,row)) = avgcore(col, row, res_img);
+				//res_img.at<uchar>(Point(row, col)) = res_img.at<uchar>(Point(row, col));
+
 			}
 			else
 			{
-				res_img.at<uchar>(row, col) = res_img.at<uchar>(row, col);
+				res_img.at<uchar>(Point(col, row)) = res_img.at<uchar>(Point(col, row));
 			}
 		}
 	}
@@ -43,17 +44,17 @@ NR::~NR()
 {
 }
 
-int NR::avgcore(int row, int col, Mat inputMat)
+int NR::avgcore(int col, int row, Mat inputMat)
 {
 	vector<Point> pointround;
-	pointround.push_back(Point(row - 1, col));
-	pointround.push_back(Point(row - 1, col - 1));
-	pointround.push_back(Point(row - 1, col + 1));
-	pointround.push_back(Point(row, col - 1));
-	pointround.push_back(Point(row, col + 1));
-	pointround.push_back(Point(row + 1, col));
-	pointround.push_back(Point(row + 1, col + 1));
-	pointround.push_back(Point(row + 1, col - 1));
+	pointround.push_back(Point(col - 1, row));
+	pointround.push_back(Point(col - 1, row - 1));
+	pointround.push_back(Point(col - 1, row + 1));
+	pointround.push_back(Point(col, row - 1));
+	pointround.push_back(Point(col, row + 1));
+	pointround.push_back(Point(col + 1, row));
+	pointround.push_back(Point(col + 1, row + 1));
+	pointround.push_back(Point(col + 1, row - 1));
 
 	int sumval = 0;
 	for (auto &it : pointround)
