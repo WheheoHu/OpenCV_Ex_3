@@ -19,6 +19,10 @@ int main() {
 
 	Mat img_NR_avg = NR(img_SaltNoise).averageFiltering();
 	imshow("NR_avg", img_NR_avg);
+	Mat img_NR_mid = NR(img_SaltNoise).MidFiltering();
+	imshow("NR_mid", img_NR_mid);
+	Mat img_NR_KNN = NR(img_SaltNoise).KNNFiltering();
+	imshow("NR_KNN", img_NR_KNN);
 	waitKey();
 
 }
